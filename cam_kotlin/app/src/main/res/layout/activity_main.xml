@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         app:fabSize="normal"
         android:src="@drawable/ic_switch_camera"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="32dp"
         android:layout_alignParentRight="true"
         app:backgroundTint="@android:color/white"/>
