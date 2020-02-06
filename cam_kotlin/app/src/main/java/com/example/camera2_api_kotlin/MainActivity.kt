@@ -30,6 +30,7 @@ import java.io.File
 import java.io.IOException
 import java.util.*
 import android.Manifest
+import android.annotation.SuppressLint
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,6 +44,9 @@ class MainActivity : AppCompatActivity() {
 
     val permissions = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
 
+    val PICK_IMAGE_FROM_ALBUM = 0   // 추가
+    var photoUri: Uri? = null       // 추가
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,16 @@ class MainActivity : AppCompatActivity() {
         cameraStatus = CameraState.BACK
         flashState = FlashState.OFF
         fotoapparatState = FotoapparatState.OFF
+
+        val photoPickerIntent = Intent(Intent.ACTION_PICK)
+        photoPickerIntent.type = "image/*"
+        startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM)
+
+        fab_gallery.setOnClickListener {
+            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+            photoPickerIntent.type = "image/*"
+            startActivityForResult(photoPickerIntent, PICK_IMAGE_FROM_ALBUM)
+        }
 
         fab_camera.setOnClickListener {
             takePhoto()
@@ -65,7 +79,33 @@ class MainActivity : AppCompatActivity() {
         fab_flash.setOnClickListener {
             changeFlashState()
         }
+
     }
+
+
+
+
+    @SuppressLint("MissingSuperCall")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+
+        if (requestCode == PICK_IMAGE_FROM_ALBUM) {
+            //이미지 선택시
+            if(resultCode == Activity.RESULT_OK){
+                //이미지뷰에 이미지 세팅
+                println(data?.data)
+                photoUri = data?.data
+                fab_gallery.setImageURI(data?.data)
+            }
+
+            else{
+                finish()
+            }
+
+        }
+    }
+
+
 
     private fun createFotoapparat(){
         val cameraView = findViewById<CameraView>(R.id.camera_view)
@@ -149,23 +189,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-}
 
-enum class CameraState {
-    BACK,
-    FRONT
 
-}
+    enum class CameraState {
+        BACK,
+        FRONT
 
-enum class FotoapparatState {
-    OFF,
-    ON
+    }
 
-}
+    enum class FotoapparatState {
+        OFF,
+        ON
 
-enum class FlashState {
-    OFF,
-    TORCH
+    }
+
+    enum class FlashState {
+        OFF,
+        TORCH
+
+    }
+
 
 }
 
