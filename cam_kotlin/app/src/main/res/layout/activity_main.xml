@@ -11,48 +11,7 @@
         android:id="@+id/camera_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/fab_camera">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:src="@drawable/menu2"
-            app:backgroundTint="@android:color/white"
-            android:layout_alignParentLeft="true"
-            app:fabSize="normal" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_switch_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="320dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:src="@drawable/ic_switch_camera"
-            app:backgroundTint="@android:color/white"
-            android:layout_alignParentRight="true"
-            app:fabSize="normal" />
-
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_flash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="174dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:src="@drawable/ic_flash"
-            app:backgroundTint="@android:color/white"
-            app:fabSize="normal" />
-
-    </io.fotoapparat.view.CameraView>
+        android:layout_above="@id/fab_camera"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_camera"
@@ -66,28 +25,24 @@
         app:backgroundTint="@android:color/white"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_gallery"
+        android:id="@+id/fab_flash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"
-        android:src="@drawable/gallery"
+        android:src="@drawable/ic_flash"
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
         app:backgroundTint="@android:color/white"/>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_filter"
+        android:id="@+id/fab_switch_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"
-        android:src="@drawable/filter2"
-        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_switch_camera"
+        android:layout_alignParentTop="true"
         android:layout_margin="32dp"
         android:layout_alignParentRight="true"
         app:backgroundTint="@android:color/white"/>
-
-
-
 
 </RelativeLayout>
